@@ -16,13 +16,6 @@ if (Number(process.env.PORT) > 0) {
   console.log(`[Warning]: No port specified, using default port ${port}`);
 }
 
-let host = 'localhost';
-if (process.env.HOST) {
-  host = process.env.HOST;
-} else {
-  console.log(`[Warning]: No hostname specified, using default hostname ${host}`);
-}
-
 const server = http.createServer((req, res) => {
   req.on('error', (err) => {
     console.error(err);
@@ -57,7 +50,7 @@ const server = http.createServer((req, res) => {
   res.write(body);
   
   res.end();
-}).listen(port, host, () => {
+}).listen(port, () => {
   console.log(`[Info]: Listening on port ${port}`);
 });
 
