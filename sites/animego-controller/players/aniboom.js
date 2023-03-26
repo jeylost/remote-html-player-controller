@@ -7,6 +7,10 @@ const actions = {
     document.querySelector('video').click();
   },
 
+  pause() {
+    document.querySelector('video').click();
+  },
+
   leaveFullscreen() {
     document.exitFullscreen();
   },

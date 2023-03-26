@@ -12,7 +12,7 @@ const actions = {
   },
 
   leaveFullscreen() {
-    player.flowApi.fullscreen()
+    player.flowApi.fullscreen();
   },
 
   selectEpisode(ep) {
