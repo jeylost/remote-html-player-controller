@@ -48,10 +48,8 @@ const actions = [
   { type: 'input', text: 'Select Quality', action: 'selectQuality'},
 ];
 
-const HOST = 'localhost:3000';
-
 function callAction({ action, value }) {
-  return fetch(`http://${HOST}/action_request?action=${action}${value ? `&value=${value}` : '' }`, { method: 'POST' })
+  return fetch(`/action_request?action=${action}${value ? `&value=${value}` : '' }`, { method: 'POST' })
     .catch(error => console.error(error));
 }
 
