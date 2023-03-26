@@ -1,5 +1,45 @@
+<head>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: sans-serif;
+      margin: 0;
+    }
+    input {
+      background-color: #000;
+      border: 1px solid #fff;
+      color: #fff;
+      font-size: 1.5em;
+      margin: 0.5em;
+      padding: 0.5em;
+      text-align: center;
+      width: 50%;
+    }
+    button {
+      background-color: #000;
+      border: 1px solid #fff;
+      color: #fff;
+      font-size: 1.5em;
+      margin: 0.5em;
+      padding: 0.5em;
+      text-align: center;
+      width: 50%;
+    }
+    .container {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: center;
+      width: 100vw;
+    }
+  </style>
+</head>
 <script>
-  const actions = [
+'use strict';
+
+const actions = [
   { type: 'button', text: 'Enter Fullscreen', action: 'enterFullscreen' },
   { type: 'button', text: 'Play', action: 'play' },
   { type: 'button', text: 'Leave Fullscreen', action: 'leaveFullscreen' },
@@ -33,7 +73,7 @@ const elements = actions.map(({ type, text, action }) => {
 });
 
 const container = document.createElement('div');
-container.style = "display: flex; flex-direction: column;";
+container.classList = 'container';
 
 window.addEventListener("load", () => {
   document.body.append(container);
