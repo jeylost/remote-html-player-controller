@@ -4,17 +4,16 @@ const http = require('node:http');
 const fs = require('node:fs');
 
 const routeHandler = require('./src/handler.js');
-
 const index = fs.readFileSync('./index.html', 'utf8');
 
 let port = 3000;
 if (Number(process.env.PORT) > 0) {
   port = Number(process.env.PORT);
 } else {
-  console.log(`[Warning]: No port specified, using default port ${port}`);
+  console.log(`[WARN]: No port specified, using default port ${port}`);
 }
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
   req.on('error', (err) => {
     console.error(err);
     res.statusCode = 500;
@@ -37,22 +36,19 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  const { statusCode, headers: responseHeaders, body } = routeHandler({ path, method, headers, query });
+  if (path === '/action_request' && method === 'POST') {
+    const responseCode = await routeHandler({ path, method, headers, query });
 
-  res.statusCode = statusCode;
-
-  Object.entries(responseHeaders).forEach(([key, value]) => {
-    res.setHeader(key, value);
-  });
-  
-  res.write(body);
-  
-  res.end();
+    res.statusCode = responseCode;
+    res.setHeader('Content-Type', 'text/html');
+    res.end();
+    return;
+  }
 }).listen(port, () => {
-  console.log(`[Info]: Listening on port ${port}`);
+  console.log(`[INFO]: Listening on port ${port}`);
 });
 
 server.on('error', (err) => {
-  console.error(`[Error] ${err}`);
+  console.error(`[ERROR]: ${err}`);
   process.exit(1);
 });

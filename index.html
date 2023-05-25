@@ -42,16 +42,10 @@
 const actions = [
   { type: 'button', text: 'Enter Fullscreen', action: 'enterFullscreen' },
   { type: 'button', text: 'Play', action: 'play' },
-  {type: 'button', text: 'Pause', action: 'pause' },
+  { type: 'button', text: 'Pause', action: 'pause' },
   { type: 'button', text: 'Leave Fullscreen', action: 'leaveFullscreen' },
-  { type: 'input', text: 'Select Episode', action: 'selectEpisode'},
-  { type: 'input', text: 'Select Quality', action: 'selectQuality'},
+  { type: 'input', text: 'Select Episode', action: 'animego_selectEpisode' },
 ];
-
-function callAction({ action, value }) {
-  return fetch(`/action_request?action=${action}${value ? `&value=${value}` : '' }`, { method: 'POST' })
-    .catch(error => console.error(error));
-}
 
 const elements = actions.map(({ type, text, action }) => {
   const element = document.createElement(type);
@@ -80,4 +74,8 @@ window.addEventListener("load", () => {
   container.append(...elements);
 });
 
+function callAction({ action, value }) {
+  return fetch(`/action_request?action=${action}${value ? `&value=${value}` : '' }`, { method: 'POST' })
+    .catch(error => console.error(error));
+}
 </script>
