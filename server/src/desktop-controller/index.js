@@ -26,7 +26,7 @@ module.exports = {
       args.push(value);
     } 
     
-    const pythonProcess = spawn('python3', args);
+    const pythonProcess = spawn('python', args);
 
     pythonProcess.stderr.on('data', (err) => console.log(`[Error]: action ${knownAction.action} ended with error: ${err}`));
     pythonProcess.on('error', (err) => console.log(`[Error]: action ${knownAction.action} ended with error: ${err}`));
