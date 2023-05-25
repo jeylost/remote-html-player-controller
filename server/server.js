@@ -2,10 +2,8 @@
 
 const http = require('node:http');
 const fs = require('node:fs');
-const ws = require('ws');
 
 const routeHandler = require('./src/handler.js');
-const connections = require('./src/connections.js');
 
 const index = fs.readFileSync('./index.html', 'utf8');
 
@@ -57,18 +55,4 @@ const server = http.createServer((req, res) => {
 server.on('error', (err) => {
   console.error(`[Error] ${err}`);
   process.exit(1);
-});
-
-const websocket = new ws.Server({ server });
-
-websocket.on('connection', (socket) => {
-  socket.on('error', (err) => {
-    console.error(`[Error] ${err}`);
-
-    socket.close();
-
-    connections.delete(socket);
-  });
-
-  connections.add(socket);
 });

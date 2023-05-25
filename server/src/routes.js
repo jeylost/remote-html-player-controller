@@ -1,17 +1,13 @@
 'use strict';
-
-const connections = require('./connections.js');
+const { actionResolver } = require('./desktop-controller');
 
 module.exports = {
   'post:/action_request': function (request) {
     const { query } = request;
 
     const { action, value } = query;
-    
-    connections.forEach((connection) => {
-      connection.send(JSON.stringify({ site: 'AnimeGo', action, value }));
-    });
-
+    actionResolver(action, value);
+  
     return {
       statusCode: 200,
       headers: {
