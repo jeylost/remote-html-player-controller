@@ -20,5 +20,13 @@ module.exports = () => {
       }
   }
 
-  return results["en0"][0];
+  if (results["en0"]) {
+    return results["en0"][0];
+  }  
+  
+  if (results["Ethernet 2"]) {
+    return results["Ethernet 2"][0];
+  }
+
+  return null;
 }

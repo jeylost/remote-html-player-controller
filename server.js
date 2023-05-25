@@ -47,7 +47,8 @@ const server = http.createServer(async (req, res) => {
   }
 }).listen(port, () => {
   const host = resolveHostIP();
-  console.log(`[INFO]: Listening on http://${host}:${port}`);
+  const msg = host ? `[INFO]: Listening on http://${host}:${port}` : `[INFO]: Listening on port ${port}`
+  console.log(msg);
 });
 
 server.on('error', (err) => {
