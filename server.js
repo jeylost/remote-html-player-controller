@@ -5,6 +5,7 @@ const fs = require('node:fs');
 
 const routeHandler = require('./src/handler.js');
 const index = fs.readFileSync('./index.html', 'utf8');
+const resolveHostIP = require('./src/utils/ip.js');
 
 let port = 3000;
 if (Number(process.env.PORT) > 0) {
@@ -45,7 +46,8 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 }).listen(port, () => {
-  console.log(`[INFO]: Listening on port ${port}`);
+  const host = resolveHostIP();
+  console.log(`[INFO]: Listening on http://${host}:${port}`);
 });
 
 server.on('error', (err) => {
