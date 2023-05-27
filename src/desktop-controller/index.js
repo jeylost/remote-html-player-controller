@@ -43,7 +43,7 @@ module.exports = async function actionResolver(action, value) {
 
     try {
       const std = await new Promise((resolve, reject) => {
-        execFile(pythonIndetifier, args, (err, ...std) => {
+        execFile(pythonIndetifier, args, { cwd: join(__dirname, 'actions')  }, (err, ...std) => {
           if (err) {
             reject(err);
           }
