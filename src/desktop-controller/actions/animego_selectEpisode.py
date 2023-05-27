@@ -3,8 +3,9 @@ import sys
 
 arguments = sys.argv
 
-episodeSelectorLabel = pyautogui.locateOnScreen('./screenshots/animego_selectEpisode.png', confidence=0.6)
+episodeSelectorLabel = pyautogui.locateOnScreen('./screenshots/animego_selectEpisode.png', confidence=0.7)
 episodeSelectorLabelPoint = pyautogui.center(episodeSelectorLabel)
+print(episodeSelectorLabelPoint)
 
 episodeSelectorLabelPointX, episodeSelectorLabelPointY = episodeSelectorLabelPoint
 
