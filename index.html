@@ -1,0 +1,85 @@
+<head>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: sans-serif;
+      margin: 0;
+    }
+    input {
+      background-color: #000;
+      border: 1px solid #fff;
+      color: #fff;
+      font-size: 1.5em;
+      margin: 0.5em;
+      padding: 0.5em;
+      text-align: center;
+      width: 50%;
+    }
+    button {
+      background-color: #000;
+      border: 1px solid #fff;
+      color: #fff;
+      font-size: 1.5em;
+      margin: 0.5em;
+      padding: 0.5em;
+      text-align: center;
+      width: 50%;
+    }
+    .container {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: center;
+      width: 100vw;
+    }
+  </style>
+</head>
+<script>
+'use strict';
+
+const actions = [
+  { type: 'button', text: 'Enter Fullscreen', action: 'enterFullscreen' },
+  { type: 'button', text: 'Play', action: 'play' },
+  { type: 'button', text: 'Pause', action: 'pause' },
+  { type: 'button', text: 'Leave Fullscreen', action: 'leaveFullscreen' },
+  { type: 'button', text: 'Skip Back', action: 'skipBack' },
+  { type: 'button', text: 'Skip Forward', action: 'skipForward' },
+  { type: 'button', text: 'Volume Up', action: 'volumeUp' },
+  { type: 'button', text: 'Volume Down', action: 'volumeDown' },
+  { type: 'input', text: 'Select Episode', action: 'animego_selectEpisode' },
+];
+
+const elements = actions.map(({ type, text, action }) => {
+  const element = document.createElement(type);
+
+  if (type === 'input') {
+    element.placeholder = text;
+    element.addEventListener('blur', ({ target: { value } }) => {
+      callAction({ action, value });
+    });
+  } else if(type === 'button') {
+    element.innerText = text;
+    element.addEventListener('click', () => {
+      callAction({ action });
+    });
+  }
+ 
+  return element;
+});
+
+const container = document.createElement('div');
+container.classList = 'container';
+
+window.addEventListener("load", () => {
+  document.body.append(container);
+
+  container.append(...elements);
+});
+
+function callAction({ action, value }) {
+  return fetch(`/action_request?action=${action}${value ? `&value=${value}` : '' }`, { method: 'POST' })
+    .catch(error => console.error(error));
+}
+</script>

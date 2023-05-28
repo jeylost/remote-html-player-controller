@@ -8,8 +8,5 @@
     "start": "node server.js"
   },
   "author": "Yevhenii Medvedev",
-  "license": "ISC",
-  "dependencies": {
-    "ws": "^8.13.0"
-  }
+  "license": "ISC"
 }
