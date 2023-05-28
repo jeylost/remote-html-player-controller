@@ -31,7 +31,7 @@ P.S. This address should be printed to the web server logs as well. Just for tho
 
 ### Why don't stick to one language Python/Node.js
 The first version of this project controlled the browser using JS that was added to the page with the player via a browser extension.
-But from the moment browsers gained the power to execute js this land is a western full of hackers. To protect civilians browsers now have their cors policies and plenty of other tools to protect people. Fortunately, browsers won't believe me that I'm a good boy just because I'm saying, "I'm good don't shoot me"!
+But from the moment browsers gained the power to execute js this land is a western full of hackers. To protect civilians browsers now have their cors policies and plenty of other tools to protect people. Fortunately, browsers won't believe me that I'm a good boy just because I'm saying, "I'm a good one don't shoot me"!
 
 If browsers are a place where anyone can add malicious code to abuse users without their knowing this code will be executed, operation systems in their turn don't allow you to execute any code until you get it from somewhere on your own and install this manually. Obviously, if users install a program they should be able to execute it. Otherwise, the PC is useless, right? And I found this fascinating library for Python named [PyAutoGUI](https://pyautogui.readthedocs.io/en/latest/index.html). Easy to use, has everything you need to control your device. 
 
