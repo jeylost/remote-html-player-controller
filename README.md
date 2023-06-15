@@ -28,8 +28,15 @@ This project can be useful for those who want to use their second device(phone, 
 P.S. This address should be printed to the web server logs as well. Just for those who struggle to find it but somehow managed to find the project on the internet...
 
 ## FAQ
-
-### Why don't stick to one language Python/Javacript
+### How to add my own command to the list
+1. add action to the list of actions in `index.html` you can find it [here](https://github.com/jeylost/remote-html-player-controller/blob/9d3dfbc04abf6e89146f190e77d5e832ae55effc/index.html#L42-L51)
+action is an object with next fields:
+ - `type` - `input` or `button`
+ - `text` - label
+ - `action` - string(should be a valid name for a file in your OS)
+2. create a file in `/src/desktop-controller/actions/` folder with `{action}.py`
+3. check default actions and [PyAutoGUI docs](https://pyautogui.readthedocs.io/en/latest/install.html) to make your own ~~awesome~~ action
+### Why don't stick to one language Python/Javascript
 The first version of this project controlled the browser using JS that was added to the page with the player via a browser extension.
 But from the moment browsers gained the power to execute js. This land is a western full of hackers. To protect civilians browsers now have their cors policies and plenty of other tools to protect people. Fortunately, browsers won't believe me that I'm a good boy just because I'm saying, "I'm a good one don't shoot me"!
 
